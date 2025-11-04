@@ -1,4 +1,4 @@
-# day2 - part1
+# day2 - part2
 
 # Functions
 
@@ -29,6 +29,15 @@ def checkSafe(arr):
             break
     return safe
 
+def dampener(arr):
+    safe = False
+    for i, _ in enumerate(arr):
+        tmpArr = arr[:i] + arr[i+1:]
+        safe = checkSafe(tmpArr)
+        if safe:
+            break
+    return safe
+
 # Main Code
 # ---------------------------------------------
 with open('input.txt', 'r') as file:
@@ -38,6 +47,8 @@ ans = []
 
 for line in nums:
     safe = checkSafe(line)
+    if not safe:
+        safe = dampener(line)
     ans.append(safe)
 
 print("Sum of safe: " + str(sum(ans)))
