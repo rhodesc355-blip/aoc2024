@@ -3,7 +3,7 @@
 # Functions
 
 # Return True if safe, else false
-# Not safe if diff between elements is 1 <= diff < 3
+# Not safe if diff between elements is 1 <= diff <= 3
 # Only safe if all elements are always increasing or decreasing. Not both
 def checkSafe(arr):
     safe = True
