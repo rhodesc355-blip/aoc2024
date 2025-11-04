@@ -1,11 +1,13 @@
 # day2 - part2
 
 # Functions
-
-# Return True if safe, else false
-# Not safe if diff between elements is 1 <= diff <= 3
-# Only safe if all elements are always increasing or decreasing. Not both
+# -----------------------------------------------------------------
 def checkSafe(arr):
+    """
+    Diff = (element - element+1)
+    Safe if difference always increases or descreases. Not both
+    Also unsafe if 1 <= diff <= 3
+    """
     safe = True
     asc = False
     desc = False
@@ -29,7 +31,11 @@ def checkSafe(arr):
             break
     return safe
 
+
 def dampener(arr):
+    """
+    Fix an unsafe line by systematically removing 1 element and running checkSafe again
+    """
     safe = False
     for i, _ in enumerate(arr):
         tmpArr = arr[:i] + arr[i+1:]
@@ -47,7 +53,7 @@ ans = []
 
 for line in nums:
     safe = checkSafe(line)
-    if not safe:
+    if not safe: # Only run the dampener if we found unsafe line
         safe = dampener(line)
     ans.append(safe)
 
