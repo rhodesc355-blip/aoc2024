@@ -37,7 +37,7 @@ def dampener(arr):
     Fix an unsafe line by systematically removing 1 element and running checkSafe again
     """
     safe = False
-    for i, _ in enumerate(arr):
+    for i in range(0,len(arr)):
         tmpArr = arr[:i] + arr[i+1:]
         safe = checkSafe(tmpArr)
         if safe:
